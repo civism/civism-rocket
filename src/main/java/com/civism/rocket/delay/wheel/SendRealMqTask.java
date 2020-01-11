@@ -1,13 +1,16 @@
 package com.civism.rocket.delay.wheel;
 
+import com.alibaba.fastjson.JSON;
 import com.civism.rocket.delay.constant.GuavaRocketConstants;
 import com.civism.rocket.delay.producer.DelayMqProducer;
 import io.netty.util.Timeout;
 import io.netty.util.TimerTask;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 
+import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -18,6 +21,7 @@ import java.util.concurrent.CountDownLatch;
  * @date 2020/1/9 1:39 下午
  * @return
  */
+@Slf4j
 public class SendRealMqTask implements TimerTask {
 
     private DelayMqProducer delayMqProducer;
@@ -33,6 +37,8 @@ public class SendRealMqTask implements TimerTask {
         validate();
         toRealMessage(message);
         sendResult = delayMqProducer.send(message);
+        String uuid = message.getUserProperty(GuavaRocketConstants.GUAVA_ORIGINAL_UUID);
+        log.info("真实Mq ---uuId : {}在当前时间{} 发送成功，返回值 {}", uuid, String.format("%tF %<tT", new Date()), JSON.toJSONString(sendResult));
         countDownLatch.countDown();
     }
 
@@ -40,7 +46,7 @@ public class SendRealMqTask implements TimerTask {
         return sendResult;
     }
 
-    private void validate() throws Exception {
+    private void validate() {
         if (delayMqProducer == null) {
             throw new IllegalArgumentException("producer is  null");
         }

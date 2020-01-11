@@ -1,6 +1,5 @@
 package com.civism.rocket.delay.listener;
 
-import com.alibaba.fastjson.JSON;
 import com.civism.rocket.delay.constant.GuavaRocketConstants;
 import com.civism.rocket.delay.producer.DelayMqProducer;
 import lombok.extern.slf4j.Slf4j;
@@ -34,9 +33,8 @@ public class GuavaMessageListener implements MessageListenerConcurrently {
 
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-        for (MessageExt messageExt : msgs) {
-            try {
-                System.out.println(JSON.toJSONString(messageExt.getBody()));
+        try {
+            for (MessageExt messageExt : msgs) {
                 Map<String, String> properties = messageExt.getProperties();
 
                 String topic = properties.get(GuavaRocketConstants.GUAVA_ORIGINAL_TOPIC);
@@ -66,12 +64,11 @@ public class GuavaMessageListener implements MessageListenerConcurrently {
                 }
                 message.setBody(messageExt.getBody());
                 delayMqProducer.sendDelay(message, new Date(Long.valueOf(times) * 1000L));
-            } catch (Exception e) {
-                log.error("消息发送失败", e);
-                continue;
+                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
+        } catch (Exception e) {
+            log.error("消息发送失败", e);
         }
-
-        return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+        return ConsumeConcurrentlyStatus.RECONSUME_LATER;
     }
 }
