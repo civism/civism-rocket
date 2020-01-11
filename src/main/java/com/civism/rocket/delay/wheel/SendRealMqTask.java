@@ -16,8 +16,6 @@ import java.util.concurrent.CountDownLatch;
  * @projectName：civism-rocket
  * @className：SendRealMqTask
  * @date 2020/1/9 1:39 下午
- * @E-mail:gongdexing@oxyzgroup.com
- * @Copyright: 版权所有 (C) 2020 蓝鲸淘.
  * @return
  */
 public class SendRealMqTask implements TimerTask {

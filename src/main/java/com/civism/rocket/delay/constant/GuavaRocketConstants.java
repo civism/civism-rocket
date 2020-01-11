@@ -6,8 +6,6 @@ package com.civism.rocket.delay.constant;
  * @projectName：civism-rocket
  * @className：GuavaRocketConstants
  * @date 2020/1/9 1:42 下午
- * @E-mail:gongdexing@oxyzgroup.com
- * @Copyright: 版权所有 (C) 2020 蓝鲸淘.
  * @return
  */
 public class GuavaRocketConstants {

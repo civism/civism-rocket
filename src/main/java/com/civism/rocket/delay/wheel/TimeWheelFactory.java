@@ -12,8 +12,6 @@ import java.util.concurrent.TimeUnit;
  * @projectName：civism-rocket
  * @className：TimeWheelFactory
  * @date 2020/1/9 10:38 上午
- * @E-mail:gongdexing@oxyzgroup.com
- * @Copyright: 版权所有 (C) 2020 蓝鲸淘.
  * @return
  */
 public class TimeWheelFactory {

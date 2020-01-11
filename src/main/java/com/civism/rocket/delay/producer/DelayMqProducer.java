@@ -29,8 +29,6 @@ import java.util.concurrent.TimeUnit;
  * @projectName：civism-rocket
  * @className：DelayMQProducer
  * @date 2020/1/7 2:12 下午
- * @E-mail:gongdexing@oxyzgroup.com
- * @Copyright: 版权所有 (C) 2020 蓝鲸淘.
  * @return
  */
 @Slf4j

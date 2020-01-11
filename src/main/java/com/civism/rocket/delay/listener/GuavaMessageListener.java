@@ -21,8 +21,6 @@ import java.util.Map;
  * @projectName：civism-rocket
  * @className：GuavaMessageListener
  * @date 2020/1/7 4:51 下午
- * @E-mail:gongdexing@oxyzgroup.com
- * @Copyright: 版权所有 (C) 2020 蓝鲸淘.
  * @return
  */
 @Slf4j
