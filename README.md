@@ -9,11 +9,9 @@
   
 >  TODO: 5.考虑1分钟内由于强制重启等所带来的数据丢失问题
 
-![image-20200111151017731](https://tva1.sinaimg.cn/large/006tNbRwly1gasn2wrvzij31hl0u0q8c.jpg)
-   
 # 使用手册
 
-需要手动创建：**guava_topic**  **guava-group** 
+需要手动创建：topic : **guava_topic**   group: **guava-group** 
 在业务中，一定不要去使用这个topic以及分组，可以认为系统默认暂用
 
 # 优点
